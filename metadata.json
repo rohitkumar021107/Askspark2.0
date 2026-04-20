@@ -1,0 +1,6 @@
+{
+  "name": "AskSpark",
+  "description": "A premium eLearning platform where students can ask doubts anonymously and get help from teachers to build confidence.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}
