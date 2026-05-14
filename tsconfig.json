@@ -1,26 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "strict": true,
+    "target": "ES2020",
     "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "module": "ESNext",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
+    "strictPropertyInitialization": false,
+    "moduleResolution": "node",
     "allowJs": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+    "outDir": "HACK_BECAUSE_OF_ALLOW_JS"
   }
 }

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /admin
+
+Sitemap: https://student-confidence-support-system-03r.caffeine.xyz/sitemap.xml

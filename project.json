@@ -1,0 +1,24 @@
+{
+  "overview": "AskSpark is a modern eLearning platform that helps students ask questions without fear, build confidence, and get real answers from teachers and AI — all in a safe, anonymous environment.",
+  "features": [
+    "Anonymous doubt submission for students",
+    "Real teacher + AI support for instant answers",
+    "Confidence score and XP progress tracking",
+    "Live class broadcast with in-class chat",
+    "Smart doubt search with video solutions",
+    "Role-based dashboards for students and teachers",
+    "Blog and Learning Hub with lectures and practice questions"
+  ],
+  "category": "education",
+  "tags": [
+    "edtech",
+    "elearning",
+    "student",
+    "teacher",
+    "q-a",
+    "confidence",
+    "ai",
+    "live-class"
+  ],
+  "last_updated": "2026-04-08T15:09:15.013Z"
+}

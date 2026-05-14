@@ -1,0 +1,79 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = 
+ record {
+   displayName: text;
+   doubtsSubmitted: nat;
+   role: opt AppRole;
+ };
+type Time = int;
+type ExternalBlob = blob;
+type DoubtSubmission = 
+ record {
+   image: opt ExternalBlob;
+   isAnonymous: bool;
+   "text": text;
+ };
+type Doubt = 
+ record {
+   id: text;
+   image: opt ExternalBlob;
+   isAnonymous: bool;
+   isAnswered: bool;
+   studentSubmitter: opt principal;
+   teacherResponse: opt text;
+   "text": text;
+   timestamp: Time;
+ };
+type AppRole = 
+ variant {
+   student;
+   teacher;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  answerDoubt: (doubtId: text, response: text) -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  getAllDoubts: () -> (vec Doubt) query;
+  getAllUserProfiles: () -> (vec UserProfile) query;
+  getCallerConfidenceScore: () -> (nat) query;
+  getCallerDoubts: () -> (vec Doubt) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getDoubt: (id: text) -> (Doubt) query;
+  getProfileByPrincipal: (user: principal) -> (opt UserProfile) query;
+  getStudentConfidenceScore: (user: principal) -> (nat) query;
+  getTeacherNotificationCount: () -> (nat) query;
+  getUnansweredDoubts: () -> (vec Doubt) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  isCallerAdmin: () -> (bool) query;
+  saveCallerUserProfile: (_profile: UserProfile) -> () query;
+  submitDoubt: (submission: DoubtSubmission) -> (text);
+  submitUserProfile: (displayName: text, role: AppRole) -> ();
+}
